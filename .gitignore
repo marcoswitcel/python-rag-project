@@ -1,0 +1,7 @@
+# pasta do Virtual Environment
+.venv/
+venv/
+
+# Python bytecode e cache
+__pycache__/
+*.pyc
