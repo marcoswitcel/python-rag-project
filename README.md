@@ -19,7 +19,7 @@ source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
-## Adicionando novas dendências
+## Adicionando novas dependências
 
 ```bash
 # é só ativar o virtualenve e instalar o pacote com o comando pip
