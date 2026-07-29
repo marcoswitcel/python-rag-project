@@ -5,3 +5,9 @@ venv/
 # Python bytecode e cache
 __pycache__/
 *.pyc
+
+# pasta do banco vetorial
+data/vectorstore
+
+# usado para manter pastas
+!.gitkeep

@@ -1,0 +1,28 @@
+[
+  {
+    "id": 55682,
+    "nome_arquivo": "55682-h.htm",
+    "formato": "HTML",
+    "titulo": "Quincas Borba",
+    "autor": "Machado de Assis",
+    "idioma": "pt",
+    "url_gutenberg": "https://www.gutenberg.org/ebooks/55682",
+    "url_download": "https://www.gutenberg.org/files/55682/55682-h/55682-h.htm",
+    "licenca": "Domínio Público (Licença Project Gutenberg)",
+    "creditos_digitalizacao": "Laura Natal Rodriguez & Marc D'Hooghe (Free Literature / Internet Archive)",
+    "data_download": "2026-07-28"
+  },
+  {
+    "id": 55752,
+    "nome_arquivo": "55752-h.htm",
+    "formato": "HTML",
+    "titulo": "Dom Casmurro",
+    "autor": "Machado de Assis",
+    "idioma": "pt",
+    "url_gutenberg": "https://www.gutenberg.org/ebooks/55752",
+    "url_download": "https://www.gutenberg.org/files/55752/55752-h/55752-h.htm",
+    "licenca": "Domínio Público (Licença Project Gutenberg)",
+    "creditos_digitalizacao": "Laura Natal Rodriguez & Marc D'Hooghe (Free Literature / Internet Archive)",
+    "data_download": "2026-07-28"
+  }
+]
