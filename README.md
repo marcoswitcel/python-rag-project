@@ -33,15 +33,15 @@ pip freeze > requirements.txt
 
 ```bash
 # rodando em modo dev
-cd src && uv run fastapi dev
+cd app && uv run fastapi dev
 
 # outra forma de rodar
-fastapi dev src/main.py
+fastapi dev app/main.py
 
 # ou para rodar em modo "reload on code change"
-uvicorn src.main:app --reload
+uvicorn app.main:app --reload
 
 # ou para simular produção
-fastapi run src.main.py
+fastapi run app.main.py
 ```
 
