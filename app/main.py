@@ -2,17 +2,7 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI, Query
 
 from app.schemas import QueryResponse
-
-@asynccontextmanager
-async def lifespan(app: FastAPI):
-    print("Application Startup")
-    print("Recuperando recursos globais...")
-
-    yield
-
-    print("Application Shutdown")
-    print("Liberando recursos...")
-
+from app.core import lifespan
 
 
 app = FastAPI(title="Python RAG Project", lifespan=lifespan)
