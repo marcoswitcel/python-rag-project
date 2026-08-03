@@ -1,21 +1,35 @@
 version: '3.9'
 
 services:
-  chromadb:
-    image: chromadb/chroma:latest
-    container_name: chromadb_server
+#  chromadb:
+#    image: chromadb/chroma:latest
+#    container_name: chromadb_server
+#    restart: unless-stopped
+#    ports:
+#      - "8000:8000"
+#    environment:
+#      # Persiste os dados no disco em vez de manter apenas na RAM
+#      - IS_PERSISTENT=TRUE
+#      # Desativa o envio de métricas anônimas de uso (aumenta a privacidade)
+#      - ANONYMIZED_TELEMETRY=FALSE
+#    volumes:
+#      # Mapeia o diretório local ./data/vectorstore para o armazenamento interno do Chroma
+#      - ./data/vectorstore:/chroma/chroma
+#    profiles:
+#      - manual
+  qdrant:
+    image: qdrant/qdrant:v1.11.0 # usando versão específica
+    container_name: qdrant_server
     restart: unless-stopped
     ports:
-      - "8000:8000"
+      - "6333:6333" # HTTP API & Dashboard Web
+      - "6334:6334" # gRPC API (High-performance)
     environment:
-      # Persiste os dados no disco em vez de manter apenas na RAM
-      - IS_PERSISTENT=TRUE
-      # Desativa o envio de métricas anônimas de uso (aumenta a privacidade)
-      - ANONYMIZED_TELEMETRY=FALSE
+      # Desabilita envio de dados de telemetria
+      - QDRANT__TELEMETRY_DISABLED=true
     volumes:
-      # Mapeia o diretório local ./data/vectorstore para o armazenamento interno do Chroma
-      - ./data/vectorstore:/chroma/chroma
-
+      # Mapeia o diretório local ./data/vectorstore para o armazenamento interno do Qdrant
+      - ./data/vectorstore:/qdrant/storage:z
 networks:
   default:
     name: rag_project_network
