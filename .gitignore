@@ -11,3 +11,6 @@ data/vectorstore/*
 
 # usado para manter pastas
 !.gitkeep
+
+# ignora pasta do pycharm(jetbrains)
+.idea
