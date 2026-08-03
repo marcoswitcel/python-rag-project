@@ -39,7 +39,7 @@ cd app && uv run fastapi dev
 fastapi dev app/main.py
 
 # ou para rodar em modo "reload on code change"
-uvicorn app.main:app --reload
+uvicorn app.main:app --reload --port 8001
 
 # ou para simular produção
 fastapi run app.main.py
