@@ -3,6 +3,7 @@ from fastapi import FastAPI
 from llama_index.core import Settings
 from qdrant_client import QdrantClient
 from llama_index.vector_stores.qdrant import QdrantVectorStore
+from app.core.collection_manager import CollectionManager
 import os
 
 
@@ -23,6 +24,8 @@ async def lifespan(app: FastAPI):
         print("Conectado ao Qdrant")
     except Exception as e:
         raise RuntimeError(f"Não foi possível conectar ao servidor Qdrant no endereço: '{qdrant_url}': causa {e}")
+
+    CollectionManager.ensure_setup(client)
 
     yield
 
