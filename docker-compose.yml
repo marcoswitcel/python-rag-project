@@ -30,6 +30,20 @@ services:
     volumes:
       # Mapeia o diretório local ./data/vectorstore para o armazenamento interno do Qdrant
       - ./data/vectorstore:/qdrant/storage:z
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    container_name: uvicorn-server-dev
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
+    environment:
+      - PYTHONUNBUFFERED=1
+      - PYTHONDONTWRITEBYTECODE=1
+    profiles:
+      - dev-server
 networks:
   default:
     name: rag_project_network
