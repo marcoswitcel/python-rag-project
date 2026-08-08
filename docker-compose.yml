@@ -38,10 +38,13 @@ services:
     ports:
       - "8000:8000"
     volumes:
-      - .:/app
+      - ./app:/app/app
     environment:
       - PYTHONUNBUFFERED=1
       - PYTHONDONTWRITEBYTECODE=1
+      - QDRANT_URL=http://qdrant:6333 # Usa o nome do serviço diretamente
+    depends_on:
+      - qdrant
     profiles:
       - dev-server
 networks:

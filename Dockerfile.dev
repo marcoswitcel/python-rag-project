@@ -6,10 +6,20 @@ WORKDIR /app
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
 
+# Instalando dependências essencias para o build, necessárias para o PyTorch e Docling
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    build-essential \
+    curl \
+    git \
+    libgomp1 \
+    && rm -rf /var/lib/apt/lists/*
+
 # Instalando dependências
 COPY pip-install-deps.txt .
+
+# Atualiza o PIP e instala dependências com upgrade forçado para compatibilidade
 RUN pip install --no-cache-dir --upgrade pip && \
-    pip install --no-cache-dir -r pip-install-deps.txt
+    pip install --no-cache-dir --upgrade -r pip-install-deps.txt
 
 # Nota: Não copiamos ao código aqui porque vamos montar a  
 # pasta local usando volumes do Docker para usar o hot-reloading.
