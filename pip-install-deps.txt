@@ -1,8 +1,10 @@
 fastapi
 uvicorn
-qdrant-client
+llama-index
+qdrant-client>=1.9.0,<1.11.0
+fastembed
+llama-index-vector-stores-qdrant>=0.2.0
 llama-index-core
-llama-index-vector-stores-qdrant
 llama-index-embeddings-huggingface
 torch
 docling
