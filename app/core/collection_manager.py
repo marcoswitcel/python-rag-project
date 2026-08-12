@@ -3,8 +3,8 @@ from qdrant_client.http import models
 
 
 class CollectionManager:
-    collection_name = "books"
-    vector_size = 1024
+    collection_name = "books_0.02"
+    vector_size = 384 # ia ser 1024, mas para o modelo atual será 384
     distance = models.Distance.COSINE
 
     @staticmethod

@@ -1,9 +1,12 @@
 from contextlib import asynccontextmanager
 from pathlib import Path
-from fastapi import FastAPI, Query
+from fastapi import FastAPI, Query, Depends
+from llama_index.core.retrievers import VectorIndexRetriever
 
 from app.schemas import QueryResponse
 from app.core import lifespan, doc_converter
+from app.core.dependencies import get_retriever
+from app.schemas import SearchResult
 
 app = FastAPI(title="Python RAG Project", lifespan=lifespan)
 
@@ -14,8 +17,21 @@ def read_root():
 
 
 @app.get("/search")
-def read_item(query: str = Query(..., description="Query usada na busca")):
-    return QueryResponse(query=query, results=[])
+def read_item(query: str = Query(..., description="Query usada na busca"), retriever: VectorIndexRetriever = Depends(get_retriever)):
+    # Faz a query
+    nodes = retriever.retrieve(query)
+
+    results = [
+        SearchResult(
+            node_id=node.node.node_id,
+            score=node.score,
+            text=node.node.get_content(),
+            metadata=node.node.metadata,
+        )
+        for node in nodes
+    ]
+
+    return QueryResponse(query=query, results=results)
 
 """
     Método criado temporariamente para testar a conversão do documento para markdown
