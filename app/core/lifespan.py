@@ -18,7 +18,7 @@ async def lifespan(app: FastAPI):
 
     # Setando embeder
     Settings.embed_model = HuggingFaceEmbedding(
-        model_name="BAAI/bge-small-en-v1.5",
+        model_name=CollectionManager.model_name,
         device="cuda" if os.getenv("USE_CUDA") == "1" else "cpu",
         normalize=True,
     )
