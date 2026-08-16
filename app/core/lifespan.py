@@ -39,7 +39,6 @@ async def lifespan(app: FastAPI):
     vector_store = QdrantVectorStore(
         collection_name=CollectionManager.collection_name,
         client=client,
-        vector_name="BAAI/bge-small-en-v1.5"
     )
 
     index = VectorStoreIndex.from_vector_store(vector_store=vector_store)
